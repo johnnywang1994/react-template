@@ -1,0 +1,261 @@
+// ---------------------------------- Base CSS mixin ----------------------------------
+=ta($side)
+  @if $side == l
+    text-align: left
+  @else if $side == r
+    text-align: right
+  @else if $side == j
+    text-align: justify
+  @else
+    text-align: center
+
+=fz($size)
+  font-size: $size
+
+=pos($pos) 
+  @if $pos == fx
+    position: fixed 
+  @else if $pos == re
+    position: relative
+  @else if $pos == ab
+    position: absolute
+  @else if $pos == sticky
+    position: -webkit-sticky
+    position: sticky
+  @else 
+    position: static
+
+=dp($dis)
+  @if $dis == n
+    display: none
+  @else if $dis == flex 
+    display: -webkit-box
+    display: -ms-flexbox
+    display: flex
+  @else if $dis == iblock
+    display: inline-block
+  @else if $dis == iflex
+    display: -webkit-inline-box
+    display: -ms-inline-flexbox
+    display: inline-flex
+  @else if $dis == grid
+    display: -ms-grid
+    display: grid
+  @else if $dis == igrid
+    display: -ms-inline-grid
+    display: inline-grid
+  @else if $dis == block or table or inline
+    display: $dis
+
+=jc($pos)
+  @if $pos == start 
+    -webkit-box-pack: start
+    -ms-flex-pack: start
+    justify-content: flex-start
+  @else if $pos == end 
+    -webkit-box-pack: end
+    -ms-flex-pack: end
+    justify-content: flex-end
+  @else if $pos == around 
+    -ms-flex-pack: distribute
+    justify-content: space-around
+  @else if $pos == between
+    -webkit-box-pack: justify
+    -ms-flex-pack: justify
+    justify-content: space-between
+  @else 
+    -webkit-box-pack: center
+    -ms-flex-pack: center
+    justify-content: center
+
+=ai($pos) 
+  @if $pos == start 
+    -webkit-box-align: start
+    -ms-flex-align: start
+    align-items: flex-start
+  @else if $pos == end 
+    -webkit-box-align: end
+    -ms-flex-align: end
+    align-items: flex-end
+  @else 
+    -webkit-box-align: center
+    -ms-flex-align: center
+    align-items: center
+
+=flex($v)
+  -ms-flex: $v
+  flex: $v
+
+=flex_d($d)
+  -ms-flex-direction: $d
+  flex-direction: $d
+
+=flex_w($w)
+  -ms-flex-wrap: $w
+  flex-wrap: $w
+
+=flow($flow) 
+  @if $flow == hw 
+    -webkit-box-orient: horizontal
+    -webkit-box-direction: normal
+    -ms-flex-flow: row wrap
+    flex-flow: row wrap
+  @else if $flow == hn 
+    -webkit-box-orient: horizontal
+    -webkit-box-direction: normal
+    -ms-flex-flow: row nowrap
+    flex-flow: row nowrap
+  @else if $flow == vw 
+    -webkit-box-orient: vertical
+    -webkit-box-direction: normal
+    -ms-flex-flow: column wrap
+    flex-flow: column wrap
+  @else if $flow == vn 
+    -webkit-box-orient: vertical
+    -webkit-box-direction: normal
+    -ms-flex-flow: column nowrap
+    flex-flow: column nowrap
+
+=hideIn($screen)
+  +RWD($screen, max)
+    +dp(n)
+=showIn($screen, $type) 
+  +dp(n)
+  +RWD($screen, max)
+    +dp($type)
+
+=bg($color)
+  background-color: $color
+
+=c($color)
+  color: $color
+
+=mxw($s)
+  max-width: $s
+
+=mnw($s)
+  min-width: $s
+
+=mxh($s)
+  max-height: $s
+
+=mnh($s)
+  min-height: $s
+
+=w($s)
+  width: $s
+
+=h($s)
+  height: $s
+
+=mg($m)
+  margin: $m
+
+=pd($p)
+  padding: $p
+
+=lh($h)
+  line-height: $h
+
+=ls($s)
+  letter-spacing: $s
+
+=td($d)
+  text-decoration: $d
+
+=bd($v)
+  border: $v
+
+=border_box 
+	-webkit-box-sizing: border-box
+	box-sizing: border-box
+  
+=block_reset
+  margin: 0
+  padding: 0
+
+=font_bold
+  font-weight: 700
+
+=text_break
+  word-break: break-word
+  overflow-wrap: break-word
+
+=text_hide($line)
+  overflow: hidden
+  @if $line >= 2
+    display: -webkit-box
+    -webkit-line-clamp: $line
+    -webkit-box-orient: vertical
+    +text_break
+  @else
+    white-space: nowrap
+    text-overflow: ellipsis
+
+=toUpper
+  text-transform: uppercase
+
+=toLower
+  text-transform: lowercase
+
+=toCap
+  text-transform: capitalize
+
+=over($v)
+  overflow: $v
+
+=no_select
+  user-select: none
+
+=scroll_bg($url, $h)
+  background-image: url($url)
+  background-size: cover
+  background-attachment: fixed
+  height: $h
+
+=RWD($width, $type)
+  @if ($type == min)
+    @media (min-width: $width)
+      @content
+  @else
+    @media (max-width: $width)
+      @content
+// ---------------------------------- Offen used CSS mixin ----------------------------------
+=box_shadow($content)
+	-webkit-box-shadow: $content
+	-moz-box-shadow: $content
+	box-shadow: $content
+
+=transition($content)
+  -webkit-transition: $content
+  -o-transition: $content
+  transition: $content
+
+=transform($content) 
+  -webkit-transform: $content
+  -ms-transform: $content
+  transform: $content
+
+=transform_origin($content)
+  -webkit-transform-origin: $content
+  -ms-transform-origin: $content
+  transform-origin: $content
+
+=transform_style($content)
+  -webkit-transform-style: $content
+  transform-style: $content
+
+=perspective($content)
+  -webkit-perspective: $content
+  perspective: $content
+
+// animation
+=keyframes($name)
+  @-webkit-keyframes #{$name}
+    @content
+  @keyframes #{$name}
+    @content
+
+=animation($content)
+  -webkit-animation: $content
+  animation: $content
