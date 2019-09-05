@@ -1,5 +1,26 @@
 @import '@/plugins/_mixin.sass'
 
+$page_bg: #ddd
+
+
 body
   +mg(0)
   +pd(0)
+  +bg($page_bg)
+
+#app
+  +mxw(700px)
+  +mg(auto)
+  overflow-x: hidden
+  .link
+    +pos(ab)
+    +dp(block)
+    cursor: pointer
+    // test
+    // +bg(yellow)
+    // opacity: .5
+  .image
+    +dp(block)
+    +mxw(100%)
+
+            

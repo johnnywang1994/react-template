@@ -1,7 +1,19 @@
-import React from 'react'
+import React, { useState } from 'react'
+import { connect } from 'react-redux'
 
-function App() {
-  return <div>Hello World</div>
+import SwitchApp from '@/views/SwitchApp'
+
+let mapStateToProps = state => {
+  return {
+    subPageOpen: state.subPageOpen
+  }
 }
 
-export default App;
+
+function App({ subPageOpen }) {
+  return <SwitchApp showSub={subPageOpen} />;
+}
+
+export default connect(
+  mapStateToProps
+)(App);
