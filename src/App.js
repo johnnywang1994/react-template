@@ -1,23 +1,7 @@
-import React, { Component } from 'react';
-import '@/index.sass';
+import React from 'react'
 
-// Components
-import Hello from '@/components/Hello';
-
-
-class App extends Component {
-  constructor(props) {
-    super(props);
-  }
-
-  render() {
-    return (
-      <div>
-        <Hello />
-      </div>
-    );
-  }
+function App() {
+  return <div>Hello World</div>
 }
-
 
 export default App;
